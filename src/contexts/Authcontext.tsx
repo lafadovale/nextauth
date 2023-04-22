@@ -23,7 +23,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     console.log({ email, password });
   }
 
-  <AuthContext.Provider value={{ signIn, isAuthenticated }}>
-    {children}
-  </AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ signIn, isAuthenticated }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
