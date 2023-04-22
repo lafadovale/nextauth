@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
+import { setCookie } from "nookies";
 import Router from "next/router";
 import { api } from "@/services/api";
 
@@ -15,7 +16,7 @@ type SignInCredentials = {
 
 type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<void>;
-  user: User;
+  user?: User;
   isAuthenticated: boolean;
 };
 
@@ -41,6 +42,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // sessionStorage - não fica disponível em outras sessões
       // localStorage - não funciona no SSR (Next), de uso apenas do front
       // cookies
+
+      setCookie(undefined, "nextauth.token", token, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: "/",
+      });
+      setCookie(undefined, "nextauth.refreshToken", refreshToken, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: "/",
+      });
 
       setUser({
         email,
