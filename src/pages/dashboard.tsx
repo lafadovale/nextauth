@@ -4,6 +4,8 @@ import { withSSRAuth } from "@/utils/withSSRAuth";
 import { api } from "@/services/apiClient";
 import { setupAPIClient } from "@/services/api";
 import {} from "next";
+import { AuthTokenError } from "@/services/errors/AuthTokenError";
+import { destroyCookie } from "nookies";
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext);
