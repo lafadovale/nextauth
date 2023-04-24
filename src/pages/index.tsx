@@ -1,7 +1,5 @@
 import Head from "next/head";
-import { GetServerSideProps } from "next";
 import { FormEvent, useContext, useState } from "react";
-import { parseCookies } from "nookies";
 
 import { AuthContext } from "@/contexts/Authcontext";
 import styles from "@/styles/Home.module.css";

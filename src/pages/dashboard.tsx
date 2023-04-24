@@ -3,8 +3,6 @@ import { AuthContext } from "@/contexts/Authcontext";
 import { withSSRAuth } from "@/utils/withSSRAuth";
 import { api } from "@/services/apiClient";
 import { setupAPIClient } from "@/services/api";
-import {} from "next";
-import { useCan } from "@/hooks/useCan";
 import { Can } from "@/components/Can";
 
 export default function Dashboard() {
