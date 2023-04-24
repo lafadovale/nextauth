@@ -11,7 +11,7 @@ export function withSSRAuth<P extends { [key: string]: any }>(
 ) {
   return async (
     ctx: GetServerSidePropsContext
-  ): Promise<GetServerSidePropsResult<P>> => {
+  ): Promise<GetServerSidePropsResult<P> | undefined> => {
     const cookies = parseCookies(ctx);
 
     if (!cookies["nextauth.token"]) {

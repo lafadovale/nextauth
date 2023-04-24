@@ -73,7 +73,7 @@ export function setupAPIClient(
                 );
                 failedRequestsQueue = [];
 
-                if (process.browser) {
+                if (typeof window) {
                   signOut();
                 } else {
                   return Promise.reject(new AuthTokenError());
@@ -98,8 +98,10 @@ export function setupAPIClient(
           });
         } else {
           // deslogar o usuário
-          if (process.browser) {
+          if (typeof window) {
             signOut();
+          } else {
+            return Promise.reject(new AuthTokenError());
           }
         }
       }
